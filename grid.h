@@ -10,6 +10,6 @@ typedef struct {
 } * wskaznik;
 
 void read_from_file_and_write_to_memory(FILE * in);
-
+/*sdhbdhvgbxcznv*/
 #endif
 
