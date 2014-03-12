@@ -8,9 +8,11 @@ int main(int argc, char **argv)
   int n1, frequency,i;
   char *out = NULL;
     wskaznik pok;
+	printf("tu dziala1\n");
     FILE * in = fopen(argv[1], "r");
 	if(in == NULL)
 	return EXIT_FAILURE;
+printf("tu dziala2\n");
     while ((opt = getopt (argc, argv, "n:x:f:t:")) != -1) {
     switch (opt) {
     case 'n':
@@ -29,8 +31,9 @@ int main(int argc, char **argv)
       break;
     }
   }
-	read_from_file_and_write_to_memory(in);
-
+	printf("tu dziala3\n");
+	pok = read_from_file_and_write_to_memory(in);
+printf("tu dziala4\n");
 
 	for(i = 0; i<n1; i++)
 	{
@@ -43,5 +46,7 @@ int main(int argc, char **argv)
 		/*if(i%frequency==0)
 			write_picture(pok->tab2);*/
 	}
+	print_grids(pok, pok->wiersze, pok->kol);
+	printf("tu dziala5\n");
 	return 0;
 }
