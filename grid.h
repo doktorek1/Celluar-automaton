@@ -2,7 +2,7 @@
 #define GRID_H
 
 #include <stdio.h>
-
+/*kjvbvb*/
 typedef struct {
 	int *tab1;
 	int *tab2;
