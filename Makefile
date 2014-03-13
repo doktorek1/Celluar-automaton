@@ -1,7 +1,7 @@
-autom: main.o grid.o calculate_data.o
-	$(CC) -o autom main.o grid.o calculate_data.o
-main.o: grid.h calculate_data.h
-	$(CC) -c grid.c main.c calculate_data.c
+autom: main.o grid.o compute_data.o
+	$(CC) -o autom main.o grid.o compute_data.o
+main.o: grid.h compute_data.h
+	$(CC) -c grid.c main.c compute_data.c
 .PHONY: clean
 
 clean:
