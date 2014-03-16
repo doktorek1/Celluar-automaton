@@ -7,13 +7,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "grid.h"
+#include "neighbourhood.h"
+#include "compute_data.h"
+
 int main(int argc, char **argv)
 {
   int opt;
-  int n1, frequency,i;
+  int n1 = 100, frequency,i;
   char *out = NULL;
 	char *inp = NULL;
-    wskaznik glowny;
+    	wskaznik glowny;
+	sasiedzi stan;
+	stan = malloc(sizeof * stan);
 	printf("tu dziala1\n");
    
 	/**/
@@ -46,11 +51,11 @@ printf("tu dziala4\n");
 	for(i = 0; i<n1; i++)
 	{
 	   if(i%2==0)
-		operate(glowny, glowny->tab1,glowny->tab2);
+		operate(glowny, glowny->tab1,glowny->tab2, stan);
 		/*if(i%frequency==0)
 			write_picture(glowny->tab1);*/
 	   else
-	 	operate(glowny, glowny->tab2,glowny->tab1);
+	 	operate(glowny, glowny->tab2, glowny->tab1, stan);
 		/*if(i%frequency==0)
 			write_picture(glowny->tab2);*/
 	}
