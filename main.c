@@ -50,15 +50,19 @@ printf("tu dziala4\n");
 
 	for(i = 0; i<n1; i++)
 	{
-	   if(i%2==0)
-		operate(glowny, glowny->tab1,glowny->tab2, stan);
+	   if(i%2==0){
+		operate(glowny, glowny->tab1,glowny->tab2, stan);print_grid(glowny, glowny->tab1);
+}
 		/*if(i%frequency==0)
 			write_picture(glowny->tab1);*/
 	   else
-	 	operate(glowny, glowny->tab2, glowny->tab1, stan);
+	 	{operate(glowny, glowny->tab2, glowny->tab1, stan);print_grid(glowny, glowny->tab2);
+}
 		/*if(i%frequency==0)
 			write_picture(glowny->tab2);*/
+		//printf("\n\n");
 	}
+	//print_grid(glowny, glowny->tab1);
 	//print_grids(glowny, glowny->wiersze, glowny->kol);
 	printf("tu dziala5\n");
 	return 0;

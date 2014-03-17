@@ -11,7 +11,9 @@ typedef struct {
 	int kol;
 } * wskaznik;
 
-void print_grid(wskaznik str, int x, int y);
+void print_grids(wskaznik str, int x, int y);
+
+void print_grid(wskaznik na_siatke, int *x);
 
 wskaznik read_from_file_and_write_to_memory(FILE * in);
 

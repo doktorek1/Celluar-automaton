@@ -16,6 +16,18 @@ wskaznik alloc_grid(int x, int y)
 		}
 	return pok;
 }
+void print_grid(wskaznik na_siatke, int *tab)
+{
+	int n = (na_siatke->wiersze)*(na_siatke->kol);
+	int i,j;
+	int *tmp = tab;
+	for(i=0; i<na_siatke->wiersze;i++){
+		for(j=0;j<na_siatke->kol;j++){
+			printf(" %d ", *tmp);
+			tmp++;}
+		printf("\n");
+	}
+}
 void print_grids(wskaznik str, int x, int y)
 {
 	int *tmp = str->tab1;
