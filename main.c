@@ -60,7 +60,7 @@ printf("tu dziala4\n");
 }
 		/*if(i%frequency==0)
 			write_picture(glowny->tab2);*/
-		//printf("\n\n");
+		printf("\n\n");
 	}
 	//print_grid(glowny, glowny->tab1);
 	//print_grids(glowny, glowny->wiersze, glowny->kol);

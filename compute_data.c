@@ -13,7 +13,7 @@ void operate(wskaznik glowny, int *x, int *y, sasiedzi stan)
 		wspl1 = i/(glowny->wiersze)+1;
 		wspl2 = i%(glowny->wiersze)+1;
 		give_cell_neighbours( glowny, pom1, stan,  wspl1, wspl2);
-		printf("%d. %d %d\n", i + 1, stan->zywe, stan->martwe);
+		//printf("%d. %d %d\n", i + 1, stan->zywe, stan->martwe);
 		if(check_if_change_cell_state(stan->zywe, stan->martwe, pom1[i]) == 1)
 			pom2[i] = 1;
 		else
