@@ -1,5 +1,7 @@
-autom: main.o compute_data.o grid.o neighbourhood.o rules.o
-	$(CC) -o autom main.o compute_data.o grid.o neighbourhood.o rules.o
+autom: main.o compute_data.o grid.o neighbourhood.o rules.o write_pic.o
+	$(CC) -o autom main.o compute_data.o grid.o neighbourhood.o rules.o write_pic.o
+write_pic.o: write_pic.h
+	$(CC) -c write_pic.c
 neighbourhood.o: neighbourhood.h
 	$(CC) -c neighbourhood.c
 rules.o: rules.h

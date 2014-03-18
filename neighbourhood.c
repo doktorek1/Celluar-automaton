@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include "grid.h"
 #include "neighbourhood.h"
+
 //(x-1)*k + y - 1
+//Numery przy kolejnych sekcjach kodu oznaczają kolejne komórki, które są sprawdzane jako sąsiadki danej.
+
 void give_cell_neighbours(wskaznik glowny, int *tab, sasiedzi stan, int x, int y)
 {	
 	int liczba_zywych = 0, liczba_martwych = 0, a, b, k, w;
