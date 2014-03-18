@@ -11,6 +11,7 @@ void give_cell_neighbours(wskaznik glowny, int *tab, sasiedzi stan, int x, int y
 	int liczba_zywych = 0, liczba_martwych = 0, a, b, k, w;
 	w = glowny->wiersze;
 	k = glowny->kol;
+	//printf(" %d %d \n", x, y);
 	//1	
 	a = x - 1; b = y - 1;
 	if(a>0 && b>0 && tab[(a-1)*k +b-1]==1)

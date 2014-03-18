@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "grid.h"
 
 int daj_ilosc_cyfr_w_liczbie(int x){
@@ -64,6 +65,13 @@ char *zamien_na_napis(int x)
 }
 void save_BMP(int lp, wskaznik glowny, int *tab, char *nazwa_pliku)
 {
-
+	char pom[50];// = malloc ( 50 * sizeof ( char ) );
+	char *numer_w_nazwie = zamien_na_napis( lp );
+	//pom = ( char * ) realloc(nazwa_pliku, (strlen(nazwa_pliku) + daj_ilosc_cyfr_w_liczbie(lp)) * sizeof ( char ));
+	strcpy(pom, nazwa_pliku);
+	strcat(pom, numer_w_nazwie);
+	//puts(pom);
+	printf("\n");
+	
 }
 
