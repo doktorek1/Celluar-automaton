@@ -23,10 +23,15 @@ void print_grid(wskaznik na_siatke, int *tab)
 	int *tmp = tab;
 	for(i=0; i<na_siatke->wiersze;i++){
 		for(j=0;j<na_siatke->kol;j++){
-			printf(" %d ", *tmp);
+			if(*tmp == 0)
+				printf("   ");
+			else
+				printf(" %d ", *tmp);
+			//printf(" %d ", *tmp);
 			tmp++;}
 		printf("\n");
 	}
+	printf("\n");
 }
 void print_grids(wskaznik str, int x, int y)
 {
@@ -64,4 +69,19 @@ wskaznik read_from_file_and_write_to_memory(FILE * in)
 	//printf("Drukuje: %d %d \n", pok->wiersze, pok->kol);
 	//print_grids(pok, pok->wiersze, pok->kol);
 	return pok;
+}
+void save_last_generation(wskaznik glowny, int *x, char *name)
+{
+	int i,j;
+	int *tmp = x;
+	FILE *out = fopen(name, "w");
+	for(i=0; i < glowny->kol;i++){
+		for(j=0; j < glowny->wiersze;j++){
+			fprintf(out, " %d ", *tmp);
+			tmp++;
+			}
+		fprintf(out, "\n");
+	}
+	fclose(out);
+
 }

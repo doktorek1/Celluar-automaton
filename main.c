@@ -10,7 +10,10 @@
 #include "neighbourhood.h"
 #include "compute_data.h"
 
-char *usage =
+
+int main(int argc, char **argv)
+{
+	char *usage =
   "Usage: %s -s spline-file [-p points-file] [ -g gnuplot-file [-f from_x -t to_x -n n_points ] ]\n"
   "            if points-file is given then\n"
   "               reads discrete 2D points from points-file\n"
@@ -26,14 +29,17 @@ char *usage =
   "               - n_points defaults to 100\n"
   "               - n_points must be > 1\n"
   "            endif\n";
-
-int main(int argc, char **argv)
-{
-	char *progname= argv[0];
-  int opt;
-  int n1 = 100, frequency,i;
-  char *out = NULL;
+	if(argc == 1)     
+		{              
+		puts(usage);
+        	return EXIT_SUCCESS;
+	
+		}
+  	int opt;
+  	int n1 = 100, frequency,i;
+  	char *out = "Generacja_nr ";
 	char *inp = NULL;
+	char *zapis = NULL;
     	wskaznik glowny;
 	sasiedzi stan;
 	stan = malloc(sizeof * stan);
@@ -41,7 +47,7 @@ int main(int argc, char **argv)
    
 	/**/
 printf("tu dziala2\n");
-    while ((opt = getopt (argc, argv, "n:x:f:t:")) != -1) {
+    while ((opt = getopt (argc, argv, "n:x:f:t:l:")) != -1) {
     switch (opt) {
     case 'n':
       inp = optarg;
@@ -55,16 +61,22 @@ printf("tu dziala2\n");
     case 't':
       out = optarg;
       break;
-	    default:                   
-      printf("%s", usage);//fprintf (stderr, usage, progname);
-      exit (EXIT_FAILURE);
+    case 'l':
+      zapis = optarg;
+      break;
+	
+	    
     }
   }
 	FILE * in = fopen(inp, "r");
 	if(in == NULL)
-		return EXIT_FAILURE;
+		{
+		fprintf(stderr, "Nie mogę czytać pliku!!!. Koniec prograamu!!!\n");
+		return EXIT_SUCCESS;
+		}
 	printf("tu dziala3\n");
 	glowny = read_from_file_and_write_to_memory(in);
+	fclose(in);
 printf("tu dziala4\n");
 //printf(" %d %d \n", glowny->wiersze, glowny->kol);
 	for(i = 0; i<n1; i++)
@@ -73,20 +85,31 @@ printf("tu dziala4\n");
 		operate(glowny, glowny->tab1,glowny->tab2, stan);print_grid(glowny, glowny->tab1);
 
 		/*if(i%frequency==0)*/
-			save_BMP(i + 1, glowny, glowny->tab2, out);}
+			save_BMP(i + 1, glowny, glowny->tab2, out);sleep(1);
+	//system("clear");
+		}
 	   else
 	 	{operate(glowny, glowny->tab2, glowny->tab1, stan);print_grid(glowny, glowny->tab2);
 
 		/*if(i%frequency==0)*/
-			save_BMP(i + 1, glowny, glowny->tab1, out);}
+			save_BMP(i + 1, glowny, glowny->tab1, out);sleep(1);
+	//system("clear");
+		}
 		//printf("\n\n");
+	
 	}
 	//print_grid(glowny, glowny->tab1);
 	//print_grids(glowny, glowny->wiersze, glowny->kol);
+	if(zapis != NULL){
+		if(i % 2 == 1)
+			save_last_generation(glowny, glowny->tab1, zapis);
+		else
+			save_last_generation(glowny, glowny->tab2, zapis);
+	}
 	free(stan);
 	free(glowny->tab1);
 	free(glowny->tab2);
 	free(glowny);
 	printf("tu dziala5\n");
-	return 0;
+	return EXIT_SUCCESS;
 }

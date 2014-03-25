@@ -17,5 +17,7 @@ void print_grid(wskaznik na_siatke, int *x);
 
 wskaznik read_from_file_and_write_to_memory(FILE * in);
 
+void save_last_generation(wskaznik glowny, int *x, char *name);
+
 #endif
 
