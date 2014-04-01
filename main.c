@@ -14,30 +14,27 @@
 int main(int argc, char **argv)
 {
 	char *usage =
-  "Usage: %s -s spline-file [-p points-file] [ -g gnuplot-file [-f from_x -t to_x -n n_points ] ]\n"
-  "            if points-file is given then\n"
-  "               reads discrete 2D points from points-file\n"
-  "               writes spline approximation to spline-file\n"
-  "               - number of points should be >= 4\n"
-  "            else (points-file not given)\n"
-  "               reads spline from spline-file\n"
-  "            endfi\n"
-  "            if gnuplot-file is given then\n"
-  "               makes table of n_points within <from_x,to_x> range\n"
-  "               - from_x defaults to x-coordinate of the first point in points-file,\n"
-  "               - to_x defaults to x-coordinate of the last point\n"
-  "               - n_points defaults to 100\n"
-  "               - n_points must be > 1\n"
-  "            endif\n";
+   "           Parametres on start:\n"
+  "             -n [filename] - generation on the beginning\n"
+  "             -x [number] - number of generations to generate\n"
+  "             If not, default value is 100.\n"
+  "             -t [filename] - name of the graphical file to save generations. \n"
+  "             If not, default is <Generacja>\n"
+  "		-f [number] - frequency of saving to grafical files of generations\n"
+  "		If not, default value is 10\n"
+  "             -l [filename] - filename in *.txt format to save last generation of cells\n"
+  "             If not, then no file will be saved on disk.\n\n\n"
+  "             NOW RESTART THE PROGRAM CORRECTLY! \n\n\n";
 	if(argc == 1)     
-		{              
+		{          
+		printf("Starting program: %s\n", argv[0]);    
 		puts(usage);
         	return EXIT_SUCCESS;
 	
 		}
   	int opt;
-  	int n1 = 100, frequency,i;
-  	char *out = "Generacja_nr ";
+  	int n1 = 100, frequency = 10,i;
+  	char *out = "Generacja";
 	char *inp = NULL;
 	char *zapis = NULL;
     	wskaznik glowny;
@@ -82,17 +79,17 @@ printf("tu dziala4\n");
 	for(i = 0; i<n1; i++)
 	{
 	   if(i%2==0){
-		operate(glowny, glowny->tab1,glowny->tab2, stan);print_grid(glowny, glowny->tab1);
+		operate(glowny, glowny->tab1,glowny->tab2, stan);//print_grid(glowny, glowny->tab1);
 
-		/*if(i%frequency==0)*/
-			save_BMP(i + 1, glowny, glowny->tab2, out);sleep(1);
+		//if(i%frequency==0)
+			save_BMP(i + 1, glowny, glowny->tab2, out);//sleep(1);
 	//system("clear");
 		}
 	   else
-	 	{operate(glowny, glowny->tab2, glowny->tab1, stan);print_grid(glowny, glowny->tab2);
+	 	{operate(glowny, glowny->tab2, glowny->tab1, stan);//print_grid(glowny, glowny->tab2);
 
-		/*if(i%frequency==0)*/
-			save_BMP(i + 1, glowny, glowny->tab1, out);sleep(1);
+		//if(i%frequency==0)
+			save_BMP(i + 1, glowny, glowny->tab1, out);//sleep(1);
 	//system("clear");
 		}
 		//printf("\n\n");
@@ -105,6 +102,7 @@ printf("tu dziala4\n");
 			save_last_generation(glowny, glowny->tab1, zapis);
 		else
 			save_last_generation(glowny, glowny->tab2, zapis);
+		printf("Zapisano generacje!\n");
 	}
 	free(stan);
 	free(glowny->tab1);

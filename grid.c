@@ -24,7 +24,7 @@ void print_grid(wskaznik na_siatke, int *tab)
 	for(i=0; i<na_siatke->wiersze;i++){
 		for(j=0;j<na_siatke->kol;j++){
 			if(*tmp == 0)
-				printf("   ");
+				printf(" 0 ");
 			else
 				printf(" %d ", *tmp);
 			//printf(" %d ", *tmp);
@@ -72,12 +72,16 @@ wskaznik read_from_file_and_write_to_memory(FILE * in)
 }
 void save_last_generation(wskaznik glowny, int *x, char *name)
 {
-	int i,j;
+	int i,j,c = 0;
 	int *tmp = x;
 	FILE *out = fopen(name, "w");
+	fprintf(out, "%d %d\n", glowny->wiersze, glowny->kol);
 	for(i=0; i < glowny->kol;i++){
 		for(j=0; j < glowny->wiersze;j++){
-			fprintf(out, " %d ", *tmp);
+			//if(x[c] == 1)
+				//fprintf(out, "%d %d\n", c/(glowny->kol)+1, c%(glowny->kol)+1);
+			//c++;
+			fprintf(out, "%d", *tmp);
 			tmp++;
 			}
 		fprintf(out, "\n");
