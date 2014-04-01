@@ -3,77 +3,14 @@
 #include <string.h>
 #include <png.h>
 #include "grid.h"
-
-int daj_ilosc_cyfr_w_liczbie(int x){
-	int i = 10, l = 0, n;
-	while( l < 100)
-	{ 	
-		n = x/i;
-		if( n > 0 )
-			l++;
-		else 
-			return l + 1;
-		i = i * 10;
-	}
-	return l;
-}
-int potega(int n)
-{
-	if(n == 0) 
-		return 1;
-	int i, x = 10;
-	for(i = 0; i < n-1; i++)
-		x = x * 10;
-	return x;
-}
-char *zamien_na_napis(int x)
-{
-	int i, max;//maksymalna potega 10
-	int n = daj_ilosc_cyfr_w_liczbie(x);
-	int *cyfry = malloc(n*sizeof (int));
-	char *napis = malloc(n*sizeof (char));
-	max = potega(n)/10;
-	for(i = 0; i < n; i++)
-		{
-		cyfry[i] = x / max;//printf(" %d ", cyfry[i]);
-		x = x - cyfry[i] * max;
-		max=max/10;
-		}
-	for(i = 0; i < n; i++){
-			if(cyfry[i] == 0)
-				napis[i] = '0';
-			if(cyfry[i] == 1)
-				napis[i] = '1';
-			if(cyfry[i] == 2)
-				napis[i] = '2';
-			if(cyfry[i] == 3)
-				napis[i] = '3';
-			if(cyfry[i] == 4)
-				napis[i] = '4';
-			if(cyfry[i] == 5)
-				napis[i] = '5';
-			if(cyfry[i] == 6)
-				napis[i] = '6';
-			if(cyfry[i] == 7)
-				napis[i] = '7';
-			if(cyfry[i] == 8)
-				napis[i] = '8';
-			if(cyfry[i] == 9)
-				napis[i] = '9';
-			}
-	return napis;
-		
-}
 void save_BMP(int lp, wskaznik glowny, int *map, char *nazwa_pliku)
 {
-	char pom[50];
-	//int *buffer = tab; 
+	int n;
+	char buffer[60];
+	n = sprintf(buffer, "%s%d.png", nazwa_pliku, lp);
 	char *filename;
-	char *numer_w_nazwie = zamien_na_napis( lp );
-	strcpy(pom, nazwa_pliku);
-	strcat(pom, numer_w_nazwie);
-	
-	filename  = pom;
+	filename  = buffer;
+	puts(buffer);
 	int width = glowny->kol, height = glowny->wiersze;
 	int x, y;
 	FILE * fp;
@@ -128,7 +65,6 @@ void save_BMP(int lp, wskaznik glowny, int *map, char *nazwa_pliku)
 	fclose( fp );
 	png_free_data( png_ptr, info_ptr, PNG_FREE_ALL, -1);
 	png_destroy_write_struct( &png_ptr, (png_infopp)NULL);
-	free(row);
-	
+	free(row);	
 }
 
