@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "grid.h"
 
-void save_BMP(int lp, wskaznik->glowny, int *tab, char *nazwa_pliku);
+void save_BMP(int lp, wskaznik->glowny, int *tab, char *nazwa_pliku, int ppp);
 
 #endif
 

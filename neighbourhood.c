@@ -70,32 +70,3 @@ void give_cell_neighbours(wskaznik glowny, int *tab, sasiedzi stan, int x, int y
 	stan->martwe =  liczba_martwych;
 
 }
-
-
-/*if(x==1 && y==1){
-	int i,j,*tmp = tab;
-	for(i=0; i<glowny->kol;i++){
-		for(j=0; j<glowny->wiersze;j++){
-			printf(" %d ", *tmp);
-			tmp++;}
-		printf("\n");
-		}
-	
-	}*/
-
-/*if(tab[(x-2)*(glowny->kol) + y - 2] == 1 && x-1>0 && y-1 >0 )
-		liczba_zywych++; else liczba_martwych++;
-	if(tab[(x-2)*(glowny->kol) + y - 1] == 1 && x-1 >0 )
-		liczba_zywych++; else liczba_martwych++;
-	if(tab[(x-2)*(glowny->kol) + y] == 1 && x-1 >0 && y<glowny->kol)
-		liczba_zywych++; else liczba_martwych++;
-	if(tab[(x-1)*(glowny->kol) + y - 2] == 1 && x-1>0)
-		liczba_zywych++; else liczba_martwych++;
-	if(tab[(x-1)*(glowny->kol) + y] == 1 && y < glowny->kol)
-		liczba_zywych++; else liczba_martwych++;
-	if(tab[(x)*(glowny->kol) + y - 2] == 1 && y-1>0 && x < glowny->wiersze)
-		liczba_zywych++; else liczba_martwych++;
-	if(tab[(x)*(glowny->kol) + y - 1] == 1 && x < glowny->wiersze)
-		liczba_zywych++; else liczba_martwych++;
-	if(tab[(x)*(glowny->kol) + y] == 1 && x < glowny->wiersze && y < glowny->kol)
-		liczba_zywych++; else liczba_martwych++;*/

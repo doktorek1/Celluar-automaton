@@ -16,7 +16,7 @@ wskaznik alloc_grid(int x, int y)
 		}
 	return pok;
 }
-void print_grid(wskaznik na_siatke, int *tab)
+/*void print_grid(wskaznik na_siatke, int *tab)
 {
 	int n = (na_siatke->wiersze)*(na_siatke->kol);
 	int i,j;
@@ -52,7 +52,7 @@ void print_grids(wskaznik str, int x, int y)
 			tmp++;}
 		printf("\n");
 		}	
-}
+}*/
 wskaznik read_from_file_and_write_to_memory(FILE * in)
 {
 	int i=0, x, y, k;
@@ -78,11 +78,11 @@ void save_last_generation(wskaznik glowny, int *x, char *name)
 	fprintf(out, "%d %d\n", glowny->wiersze, glowny->kol);
 	for(i=0; i < glowny->kol;i++){
 		for(j=0; j < glowny->wiersze;j++){
-			//if(x[c] == 1)
-				//fprintf(out, "%d %d\n", c/(glowny->kol)+1, c%(glowny->kol)+1);
-			//c++;
-			fprintf(out, "%d", *tmp);
-			tmp++;
+			if(x[c] == 1)
+			fprintf(out, "%d %d\n", c/(glowny->kol)+1, c%(glowny->kol)+1);
+			c++;
+			//fprintf(out, "%d", *tmp);
+			//tmp++;
 			}
 		fprintf(out, "\n");
 	}
